@@ -29,7 +29,7 @@ export default function MapScreen() {
       }
     })();
 
-    fetch(`http://192.168.100.66:3000/places/${user.nickname}`)
+    fetch(`https://locapic-part4-backend-red.vercel.app/places/${user.nickname}`)
       .then(response => response.json())
       .then(data => {
           dispatch(initial(data.places));
@@ -44,7 +44,7 @@ export default function MapScreen() {
   ////////////////////////// ASYNC
   async function handleNewPlace() {
     try {
-      const postResponse = await fetch('http://192.168.100.66:3000/places', {
+      const postResponse = await fetch('https://locapic-part4-backend-red.vercel.app/places', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nickname: user.nickname, name: newPlace, latitude: tempCoordinates.latitude, longitude: tempCoordinates.longitude }),

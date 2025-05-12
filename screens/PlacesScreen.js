@@ -36,7 +36,7 @@ export default function PlacesScreen() {
 
       // console.log("API fetch", responseApi)
       if(!user.places.includes(newPlace.name)){
-        const postResponse = await fetch('http://192.168.100.66:3000/places', {
+        const postResponse = await fetch('https://locapic-part4-backend-red.vercel.app/places', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
@@ -67,7 +67,7 @@ export default function PlacesScreen() {
   ////////////////////////// 2nd ASYNC
   async function remove(name) {
     try {
-      const deleteResponse = await fetch('http://192.168.100.66:3000/places', {
+      const deleteResponse = await fetch('https://locapic-part4-backend-red.vercel.app/places', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -79,7 +79,7 @@ export default function PlacesScreen() {
       dispatch(removePlace(name))
       console.log("deleted", deleteData)
 
-      const getResponse = await fetch(`http://192.168.100.66:3000/places/${user.nickname}`);
+      const getResponse = await fetch(`https://locapic-part4-backend-red.vercel.app/places/${user.nickname}`);
       const getData = await getResponse.json();
       console.log('GET after POST:', getData);
       const places = getData.places.map((data, i) => {
